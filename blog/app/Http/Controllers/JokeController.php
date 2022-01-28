@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// step 1
+use App\joke;
 
 class JokeController extends Controller
 {
@@ -13,7 +15,10 @@ class JokeController extends Controller
      */
     public function index()
     {
-        return view('jokes.index');
+        $jokes = joke::all();  //step 2
+        //dump($jokes);
+
+        return view('jokes.index', compact('jokes')); //step 3
     }
 
     /**
@@ -23,7 +28,7 @@ class JokeController extends Controller
      */
     public function create()
     {
-        //
+        return view('jokes.create');
     }
 
     /**

@@ -15,6 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('jokes.index') }}">Jokes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('jokes.create') }}">Create Jokes</a>
+                    </li>
                 </ul>
             </div>
         </div>
