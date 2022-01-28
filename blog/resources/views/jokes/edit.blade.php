@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Edit our Jokes</h1>
+        <h1 class="text-center mb-5">Edit: {{ $joke->title }}</h1>
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <form action="{{ route('jokes.store') }}" method="POST">
                     @csrf
+                    @method()
                     <div class="mb-5">
                         <label  class="form-label" for="title">Title</label>
                         <input class="form-control" type="text" id="title" name="title">

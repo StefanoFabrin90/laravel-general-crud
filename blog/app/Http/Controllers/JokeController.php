@@ -91,6 +91,9 @@ class JokeController extends Controller
     {
         $joke = joke::find($id);
         dump($joke);
+
+        $joke['slug'] = Str::slug($joke['title'], '-');
+        return view('jokes.edit', compact('joke'));
     }
 
     /**
