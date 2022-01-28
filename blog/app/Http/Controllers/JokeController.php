@@ -90,9 +90,9 @@ class JokeController extends Controller
     public function edit($id)
     {
         $joke = joke::find($id);
-        dump($joke);
+        //dump($joke);
 
-        $joke['slug'] = Str::slug($joke['title'], '-');
+        //$joke['slug'] = Str::slug($joke['title'], '-');
         return view('jokes.edit', compact('joke'));
     }
 
@@ -105,7 +105,14 @@ class JokeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $joke = $request->all();
+        //dump($joke);
+
+        $new_joke = joke::find($id);
+
+        $new_joke->update($joke);
+
+        return redirect()->route('jokes.show', $new_joke->id);
     }
 
     /**
