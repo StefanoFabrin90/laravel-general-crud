@@ -15,6 +15,11 @@ class CreateJokesTable extends Migration
     {
         Schema::create('jokes', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 100);
+            $table->string('slug');
+            $table->string('author', 100);
+            $table->text('body');
+            $table->tinyInteger('vote')->unsigned();
             $table->timestamps();
         });
     }
