@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Create Another Jokes</h1>
+        <h1 class="text-center mb-5">Edit our Jokes</h1>
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <form action="{{ route('jokes.store') }}" method="POST">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 // step 1
 use App\joke;
 
@@ -39,7 +41,26 @@ class JokeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //step 4 
+        $data = $request->all();
+        dump($data);
+
+        $joke = new joke(); //row vuota
+
+        //step 5
+        // $joke->title = $data['title'];
+        // $joke->slug = Str::slug($data['title'], '-');
+        // $joke->author = $data['author'];
+        // $joke->body = $data['body'];
+        // $joke->vote = $data['vote'];
+
+        $data['slug'] = Str::slug($data['title'], '-');
+        $joke->fill($data);
+
+        // save = step 6
+        $joke->save();
+
+        return redirect()->route('jokes.show', $joke->id);
     }
 
     /**
@@ -50,7 +71,14 @@ class JokeController extends Controller
      */
     public function show($id)
     {
-        //
+        //step 7
+        $joke = joke::find($id);
+        //dump($joke);
+
+        if ($joke) {
+            return view('jokes.show', compact('joke'));
+        }
+        abort(404);
     }
 
     /**
@@ -61,7 +89,8 @@ class JokeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $joke = joke::find($id);
+        dump($joke);
     }
 
     /**
